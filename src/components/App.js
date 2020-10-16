@@ -6,7 +6,12 @@ import SearchFilter from "./SearchFilter";
 
 export default class App extends Component {
 	state = {
-		contacts: [],
+		contacts: [
+			{ id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
+			{ id: "id-2", name: "Hermione Kline", number: "443-89-12" },
+			{ id: "id-3", name: "Eden Clements", number: "645-17-79" },
+			{ id: "id-4", name: "Annie Copeland", number: "227-91-26" },
+		],
 		filter: "",
 	};
 
@@ -16,7 +21,11 @@ export default class App extends Component {
 			name,
 			number,
 		};
-
+		if (
+			this.state.contacts.filter((contact) => contact.name === name).length > 0
+		) {
+			return alert(`${contact.name} is already in the Phonebook`);
+		}
 		this.setState((prevState) => {
 			return {
 				contacts: [...prevState.contacts, contact],
@@ -50,10 +59,8 @@ export default class App extends Component {
 
 		return (
 			<>
-				<SubmitForm
-					onAddContact={this.addContact}
-					onSubmit={this.handleSubmit}
-				/>
+				<h2>Phonebook</h2>
+				<SubmitForm onAddContact={this.addContact} />
 				<h3>Find Contacts by name</h3>
 				<SearchFilter value={filter} onChangeFilter={this.changeFilter} />
 				{contacts.length > 0 && (

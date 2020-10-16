@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function SearchFilter({ value, onChangeFilter }) {
 	return (
@@ -11,3 +12,8 @@ export default function SearchFilter({ value, onChangeFilter }) {
 		</div>
 	);
 }
+
+SearchFilter.propTypes = {
+	value: PropTypes.string.isRequired,
+	onChangeFilter: PropTypes.func.isRequired,
+};
