@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const FormOverlay = styled.form`
 	width: 25%;
@@ -71,3 +72,7 @@ export default class SubmitForm extends Component {
 		);
 	}
 }
+
+SubmitForm.propTypes = {
+	onAddContact: PropTypes.func.isRequired,
+};

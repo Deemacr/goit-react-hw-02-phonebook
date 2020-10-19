@@ -21,9 +21,7 @@ export default class App extends Component {
 			name,
 			number,
 		};
-		if (
-			this.state.contacts.filter((contact) => contact.name === name).length > 0
-		) {
+		if (this.state.contacts.some((contact) => contact.name === name)) {
 			return alert(`${contact.name} is already in the Phonebook`);
 		}
 		this.setState((prevState) => {
@@ -45,6 +43,7 @@ export default class App extends Component {
 	};
 
 	removeItem = (contactID) => {
+		console.log(contactID);
 		this.setState((prevState) => {
 			return {
 				contacts: prevState.contacts.filter(({ id }) => id !== contactID),
